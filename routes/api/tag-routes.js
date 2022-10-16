@@ -80,24 +80,5 @@ router.delete('/:id', (req, res) => {
   });
 });
 
-router.put('/:id', (req, res) => {
-  // update a tag's name by its `id` value
-  Tag.Destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-  .then(dbTagData => {
-    if (!dbTagData){
-      res.status(404).json({message: 'No tag found with this id'});
-      return;
-    }
-    res.json(dbTagData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
-});
 
 module.exports = router;
